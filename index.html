@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+    <div class = "buttons">
+    <button id ="btn1">#erwrwr</button>
+    <button id ="btn2">second button</button>
+</div>
+    <h2>Click to copy</h2>
+    <div class="copy">
+        background-image        
+    </div>
+</section>
+<script>
+    let btn1 = document.querySelector("#btn1");
+    let btn2 = document.querySelector("#btn2");
+    let copyCode = document.querySelector(".copy");
+    let hexaValue = "0123456789abcdef";
+    const colors = () => {
+        let colors ="#";
+        for(let i =0; i<6;i++) {
+            colors = colors + hexaValue[Math.floor(Math.random() * 16)];
+        }
+       return colors;
+
+    }
+    let btn1color = "#FFFF00";
+    let btn2color = "#00FF00";
+     // Set initial button colors and background gradient
+     btn1.textContent = btn1color;
+        btn2.textContent = btn2color;
+        btn1.style.backgroundColor = btn1color;
+        btn2.style.backgroundColor = btn2color;
+        document.body.style.backgroundImage = `linear-gradient(to right, ${btn1color}, ${btn2color})`;
+        copyCode.innerText = `background-image:linear-gradient(to right, ${btn1color}, ${btn2color})`;
+
+
+    
+    btn1.addEventListener("click",()=> {btn1color = colors();
+        btn1.textContent = btn1color;
+        btn1.style.backgroundColor = btn1color;
+        
+        document.body.style.backgroundImage= `linear-gradient(to right, ${btn1color}, ${btn2color})`;
+        document.querySelector(".copy").innerText = `background-image:linear-gradient(to right, ${btn1color}, ${btn2color})`;
+    });
+
+
+    btn2.addEventListener("click",()=> {
+        btn2color = colors();
+        btn2.textContent = btn2color;
+        btn2.style.backgroundColor = btn2color;
+        
+        document.body.style.backgroundImage= `linear-gradient(to right, ${btn1color}, ${btn2color})`;
+        document.querySelector(".copy").innerText = `background-image:linear-gradient(to right, ${btn1color}, ${btn2color})`;
+    }
+    
+    );
+
+    copyCode.addEventListener("click",() => {
+        navigator.clipboard.writeText(copyCode.textContent);
+        alert("copied");
+    });
+</script>
+</body>
+</html>
